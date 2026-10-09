@@ -6,7 +6,7 @@ Builds on the OpenAI Agents SDK weather agent in two ways. The agent can look up
 
 The OpenAI Agents SDK weather agent exposes four weather tools as Temporal activities, wrapped via `activity_as_tool(...)` so the SDK's `Runner` can call them. Once you give it a goal, it runs to completion on its own.
 
-This workshop keeps those weather tools and adds:
+This demo keeps those weather tools and adds:
 
 - **An F1 MCP server.** An external tool server, `f1-mcp-server`, provides race schedules, results, and standings. Temporal's `StatelessMCPServerProvider` dispatches each MCP operation (`listTools`, `callTool`) as its own activity, so those calls are durable, retryable, and visible in workflow history next to the weather activities.
 - **Human-in-the-loop.** The agent can pause, ask you a question, wait for your response, and continue with that information. Several prompts below are ambiguous on purpose ("which race?", "which Portland?") so you can see the pause.
@@ -76,7 +76,7 @@ uv run python -m start_workflow --workflow-id hitl-agent-<uuid>
 | `get_telemetry` | Vehicle telemetry for a lap |
 | `get_championship_standings` | Driver and constructor standings |
 
-**In-workflow tool (new in this workshop):**
+**In-workflow tool (new in this demo):**
 
 | Tool | Kind | Purpose |
 |------|------|---------|
