@@ -95,4 +95,4 @@ uv run python -m start_workflow "Compare the weather in London and Sydney right 
 
 ### Observing the workflow
 
-View running workflows in the Temporal Web UI at [http://localhost:8233](http://localhost:8233). Each LLM call and tool execution appears as a separate activity in the workflow history, so you can inspect and retry individual steps of the agent loop.
+View running workflows in the Temporal Web UI at [http://localhost:8233](http://localhost:8233). Each LLM call and tool execution appears as a separate activity in the workflow history, so each step is individually visible, and a failed step is retried on its own.

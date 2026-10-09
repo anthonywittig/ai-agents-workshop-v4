@@ -41,13 +41,10 @@ The weather and F1 paths are the same ones from the multi-agent orchestrator. Wh
 
 | | One activity wrapping the loop | This demo |
 |---|---|---|
-| Travel planner language | whichever language the activity is written in | **Java** |
-| Travel planner framework | an agent SDK with no Temporal integration | **Spring AI** |
+| Agent framework | any SDK, no Temporal integration | **Spring AI + Temporal integration** |
 | Invocation | single activity (`activity_as_tool`) | **Nexus** (`nexus_operation_as_tool`) |
 | Durability of the travel agent | coarse (one activity wraps the whole loop) | **per-step** (each LLM/tool call is an activity) |
 | Where it runs | the PA worker (`orchestrator-tq`) | a separate Java worker (`travel-planner-agent-tq`) |
-
-The Python orchestrator, weather agent, and F1 expert are those same paths. The travel planner is the addition.
 
 ## The cross-language Nexus contract
 

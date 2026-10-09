@@ -26,8 +26,6 @@ notes:
     This travel planner gets per-step durability. Every LLM call and
     every tool call is its own Temporal activity - exactly like the
     OpenAI Agents SDK specialists.
-
-    Compare the two histories side by side.
 tabs:
 - id: jk6wyakcueq7
   title: Java Worker
@@ -88,8 +86,7 @@ The rose path is the one that matters here: the travel planner is reached over a
 
 | | One activity wrapping the loop | This demo |
 |---|---|---|
-| Travel planner language | whichever language the activity is written in | Java |
-| Travel planner framework | an agent SDK with no Temporal integration | Spring AI |
+| Agent framework | any SDK, no Temporal integration | Spring AI + Temporal integration |
 | Invocation from orchestrator | direct activity | Nexus operation |
 | Durability of travel agent | coarse (whole loop = one activity) | per-step (each LLM/tool call = one activity) |
 
@@ -171,7 +168,7 @@ You should see travel advice about Monaco after a few seconds, served by the Jav
 
 Open the [button label="Temporal UI" background="#444CE7"](tab-4) tab.
 
-In the **orchestrator** history, the travel planner path now shows `NexusOperationScheduled` / `NexusOperationCompleted` instead of a single opaque activity event.
+In the **orchestrator** history, the travel planner path shows `NexusOperationScheduled` / `NexusOperationCompleted`.
 
 Then find the **`TravelPlannerAgentWorkflow`** on `travel-planner-agent-tq`. Its history shows per-step activities: a `ChatModelActivity` for each LLM call, individual activities for each tool call. That's Spring AI giving the Java agent the same per-step durability the OpenAI Agents SDK gives the Python agents.
 
@@ -180,7 +177,7 @@ Then find the **`TravelPlannerAgentWorkflow`** on `travel-planner-agent-tq`. Its
 <div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;">
   <details style="flex:1;min-width:240px;background:#5f1e3a;border-radius:8px;">
     <summary style="padding:12px;cursor:pointer;text-align:center;">One activity<br><small>whole loop = one event</small></summary>
-    <div style="padding:0 12px 12px;font-size:13px;color:#c8ccd8;">The travel planner called as a direct activity. Whole loop = one ScheduleActivityTask: ask_travel_planner. A worker crash mid-loop restarts the entire travel-planning conversation from scratch.</div>
+    <div style="padding:0 12px 12px;font-size:13px;color:#c8ccd8;">The travel planner called as a direct activity. Whole loop = one opaque ScheduleActivityTask. A worker crash mid-loop restarts the entire travel-planning conversation from scratch.</div>
   </details>
   <div style="font-size:20px;color:#8b8fa3;align-self:center;">→</div>
   <details style="flex:1;min-width:240px;background:#1e5f3a;border-radius:8px;">

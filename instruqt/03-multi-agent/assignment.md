@@ -10,7 +10,7 @@ notes:
   contents: |-
     # What if each specialist were its own workflow?
 
-    The previous agent was one workflow, one agent. This challenge introduces agent-as-workflow:
+    The human-in-the-loop agent was one workflow, one agent. This challenge introduces agent-as-workflow:
     each specialist is a real Temporal workflow execution, not an inline function.
 
     Two different invocation patterns. Two different visibility profiles in

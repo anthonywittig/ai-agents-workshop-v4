@@ -76,7 +76,7 @@ uv run python -m start_workflow --workflow-id hitl-agent-<uuid>
 | `get_telemetry` | Vehicle telemetry for a lap |
 | `get_championship_standings` | Driver and constructor standings |
 
-**In-workflow tool (new in this demo):**
+**In-workflow tool (new in this workshop):**
 
 | Tool | Kind | Purpose |
 |------|------|---------|
@@ -132,7 +132,7 @@ The worker activates this venv on each invocation via the launch command shown i
 export F1_MCP_SERVER_HOME=/absolute/path/to/f1-mcp-server
 ```
 
-Add this to your shell profile if you want it persisted across sessions. The worker reads this variable at startup and bakes it into the `MCPServerStdio` launch command.
+If you leave it unset, the worker falls back to `~/Projects/Temporal/AI/MCP/f1-mcp-server`. Add the export to your shell profile if you want a different location persisted across sessions. The worker reads this variable at startup and bakes it into the `MCPServerStdio` launch command.
 
 ## Running
 
